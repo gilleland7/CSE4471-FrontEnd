@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   const url = require('./components/lock.png');
-   const SignUpPage = require('./src/SignUp.js');
+  
   const center = {
 	  textAlign: "center"
   };
