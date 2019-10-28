@@ -1,73 +1,44 @@
-import React, { useState } from 'react';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import React from 'react';
 
 function App() {
   const url = require('./components/lock.png');
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  function validateForm() {
-    return password.length > 8; //length validation was easy here
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-  const center = {
-	  textAlign: "center"
-  };
-  const wrapper = {
-	  display : "flex"
-  };
   
-  const left = {
-	  flex: "right",
-	  backgroundColor: "SteelBlue",
-	  width: 1500 //Need to make this relative
-  };
-  const right = {
-	  flex: "right",
-	  backgroundColor: "SteelBlue"
-  };
+   const center = {
+ 	  textAlign: "center"
+   };
 
   return (
-	<div style = {center} className = "Banner">		
-		<div style ={wrapper} className = "FlexWrapper">
-			<div style = {left} className = "Name">
-				<h1> &emsp;&emsp;&emsp;&emsp; Security Center </h1>			
-			</div>
-			<div style = {right} className = "Products">
-				<h2> PRODUCTS </h2>
-			</div>
-		</div>
+	 <div style = {center} className = "Banner">	
+	 
+		<nav class= "navbar navbar-dark bg-dark">
+			<span class= "navbar-brand">Inject Me Corp</span>
+			<form class= "form-inline">
+				<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>
+				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</nav>
+		
 		<div className = "Logo">
 			<img src={url} style={{width: 150}} alt='Lock Logo' />
-			<div className="Login">
-				<form onSubmit={handleSubmit}> 
-					<FormGroup controlId="email" bsSize="large">
-					<FormLabel>Username</FormLabel>
-					<FormControl
-						autoFocus
-						type="username"
-						value={username}
-						onChange={e => setUsername(e.target.value)}
-					/>
-					</FormGroup>
-					<FormGroup controlId="password" bsSize="large">
-						<FormLabel>Password &nbsp;</FormLabel>
-						<FormControl
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-						type="password"
-						/>
-					</FormGroup>
-										
-					<Button block bsSize="large" disabled={!validateForm()} type="submit"> Login </Button>					
+			<form class= "form-group">
+				<form class= "form-inline">
+					<label for= "username">Username</label>
+					<input class="form-control" type="username"></input>
 				</form>
-			</div>
-			<div className = "Register"> &emsp;<button> Register </button> </div>
+				<form class= "form-inline">
+					<label for= "username">Password</label>
+					<input class="form-control" type="password"></input>
+				</form>
+			</form>
+		</div> 
+
+		<div className= "next">
+			<button type= "button" class= "btn btn-secondary">Login</button>
+			<button type= "button" class= "btn btn-secondary">Sign Up</button>
 		</div>
-	</div>
+
+
+	 </div>
   );
 }
 
