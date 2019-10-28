@@ -54,7 +54,7 @@ function App() {
 					/>
 					</FormGroup>
 					<FormGroup controlId="password" bsSize="large">
-						<FormLabel>Password&nbsp;</FormLabel>
+						<FormLabel>Password &nbsp;</FormLabel>
 						<FormControl
 						value={password}
 						onChange={e => setPassword(e.target.value)}
