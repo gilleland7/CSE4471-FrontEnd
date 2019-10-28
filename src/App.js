@@ -3,7 +3,6 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
 function App() {
   const url = require('./components/lock.png');
-  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
