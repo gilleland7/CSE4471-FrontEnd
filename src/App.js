@@ -23,18 +23,18 @@ function App() {
 		<div class= "container-fluid">
 			<form action="" class= "form-group">
 				<div class= "form-inline justify-content-center">
-					<label for= "username">Username</label>
+					<label for= "username" style ={{margin: 8 }}>Username </label>
 					<input class="form-control" type="username"/>
 				</div>
 				<div class= "form-inline justify-content-center">
-					<label for= "password"> Password</label>
+					<label for= "password" style ={{margin: 10 }}>Password</label>
 					<input class="form-control" type="password"/>
 				</div>
 			</form>
 		</div> 
 
 		<div className= "next">
-			<button type= "button" class= "btn btn-secondary">Login</button>
+			<button type= "button" class= "btn btn-secondary" style ={{margin: 10 }}>Login</button>
 			<button type= "button" class= "btn btn-secondary">Sign Up</button>
 		</div>
 
