@@ -18,17 +18,18 @@ function App() {
 			</form>
 		</nav>
 		
-		<div className = "Logo">
-			<img src={url} style={{width: 150}} alt='Lock Logo' />
-			<form class= "form-group">
-				<form class= "form-inline">
+		<img src={url} style={{width: 150}} alt='Lock Logo' />
+
+		<div class= "container-fluid">
+			<form action="" class= "form-inline justify-content-center">
+				<div class= "form-group">
 					<label for= "username">Username</label>
-					<input class="form-control" type="username"></input>
-				</form>
-				<form class= "form-inline">
-					<label for= "username">Password</label>
-					<input class="form-control" type="password"></input>
-				</form>
+					<input class="form-control" type="username"/>
+				</div>
+				<div class= "form-group">
+					<label for= "password">Password</label>
+					<input class="form-control" type="password"/>
+				</div>
 			</form>
 		</div> 
 
