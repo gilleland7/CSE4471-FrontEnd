@@ -2,6 +2,7 @@ import React from 'react';
 
 function App() {
   const url = require('./components/lock.png');
+  const signUrl = require('./Signup.js');
   
    const center = {
  	  textAlign: "center"
@@ -34,10 +35,9 @@ function App() {
 		</div> 
 
 		<div className= "next">
-			<button type= "button" class= "btn btn-secondary" style ={{margin: 10 }}>Login</button>
-			<button type= "button" class= "btn btn-secondary">Sign Up</button>
+			<button type= "button" class= "btn btn-secondary">Login</button>
+			<a href= {signUrl} class= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</a>
 		</div>
-
 
 	 </div>
   );
