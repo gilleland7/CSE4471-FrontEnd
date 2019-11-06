@@ -1,4 +1,6 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Sign from './Signup';
 
 function App() {
   const url = require('./components/lock.png');
@@ -17,10 +19,22 @@ function App() {
 				<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>
 				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
 			</form>
-		</nav>
-		
-		<img src={url} style={{width: 150}} alt='Lock Logo' />
+		</nav>		
+		<img src={url} style={{width: 150}} alt='Lock Logo' />	
+		<div className= "next">						
+			<Router>
+				<Switch>
+					<Route path="/" exact component ={Home} />
+					<Route path="/" component={Sign} />
+				</Switch>
+			</Router>
+		</div>
+	 </div>
+  );
+}
 
+const Home = () => (
+	<div>		
 		<div class= "container-fluid">
 			<form action="" class= "form-group">
 				<div class= "form-inline justify-content-center">
@@ -33,14 +47,11 @@ function App() {
 				</div>
 			</form>
 		</div> 
-
-		<div className= "next">
-			<button type= "button" class= "btn btn-secondary">Login</button>
-			<a href= {signUrl} class= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</a>
-		</div>
-
-	 </div>
-  );
-}
+		<Link to='/Sign'>
+			<button type= "button" class= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
+		</Link>		
+		<button type= "button" class= "btn btn-secondary">Login</button>
+	</div>
+);
 
 export default App;
