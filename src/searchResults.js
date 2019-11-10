@@ -16,13 +16,14 @@ function Search() {
 			<span class= "navbar-brand">Inject Me Corp</span>
 
 			<form class= "form-inline">
-				<input class="form-control" type="search" placeholder="Search by user name" aria-label="search"></input>				
+				<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>				
 					<button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>				
 			</form>
 		</nav>
+		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
 		<div className = "Results">
 			Results: (INSERT RESULT QUERY HERE) 
-			<hr>
+			<hr/>
 		</div>
 	</div>
   );

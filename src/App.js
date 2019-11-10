@@ -1,40 +1,40 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
+import Results from './searchResults';
 
-function App() {
-  const url = require('./components/lock.png');
-  const signUrl = require('./Signup.js');
-  
+function App() {  
    const center = {
  	  textAlign: "center"
    };
 
   return (
-	 <div style = {center} className = "Banner">	
-	 
-		<nav class= "navbar navbar-dark bg-dark">
-			<span class= "navbar-brand">Inject Me Corp</span>
-			<form class= "form-inline">
-				<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>
-				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-			</form>
-		</nav>		
-		<img src={url} style={{width: 150}} alt='Lock Logo' />	
-		<div className= "next">						
+	 <div style = {center} className = "Banner">				
+		<div className= "next">			
 			<Router>
 				<Switch>
 					<Route path="/" exact component ={Home} />
-					<Route path="/" component={Sign} />
+					<Route path="/Results" component={Results} />
+					<Route path="/Sign" component={Sign} />					
 				</Switch>
 			</Router>
-		</div>
+		</div>		
 	 </div>
   );
 }
 
 const Home = () => (
-	<div>		
+	<div>				
+		<nav class= "navbar navbar-dark bg-dark">		
+			<span class= "navbar-brand">Inject Me Corp</span>			
+			<Link to='/Results'>
+			<form class= "form-inline">				
+					<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>
+					<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>				
+			</form>	
+			</Link>			
+		</nav>			
+		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
 		<div class= "container-fluid">
 			<form action="" class= "form-group">
 				<div class= "form-inline justify-content-center">

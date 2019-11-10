@@ -4,8 +4,10 @@ function Signup(){
 
     return(
         <div class= "sigUupForm">
-            <span class ="border border-dark">
-
+			<nav class= "navbar navbar-dark bg-dark">		
+				<span class= "navbar-brand">Inject Me Corp</span>	      
+			</nav>		
+			<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
                 <form >
                     <div class= "form-group row">
                         <label class= "col-sm-2 col-form-label">First Name</label>
@@ -56,7 +58,7 @@ function Signup(){
                         </div>
                     </div>
                 </form>
-            </span>
+            
 
         </div>
     );
