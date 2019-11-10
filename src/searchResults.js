@@ -2,10 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function Search() {
-	
-   const url = require('./components/lock.png');
-  
+function Search() { 
    const center = {
  	  textAlign: "center"
    }   
