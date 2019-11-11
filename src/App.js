@@ -2,16 +2,11 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
 import Results from './searchResults';
-import axios from 'axios';
-
-
 
 function App() {  
    const center = {
  	  textAlign: "center"
    };
-   
- //const axios = require('axios')  
 
   return (
 	 <div style = {center} className = "Banner">				
@@ -30,22 +25,33 @@ function App() {
 
 function getUser(){	
 	var user = document.getElementById("username");
-	return user;
+	var string = user.value
+	return string
 }
 function getPassword(){
 	var pass = document.getElementById("password");
-	return pass;
+	var string = pass.value;
+	return string;
 }
 
-function toSubmit(){
-	
-var check = axios.get('https://opposum-api.herokuapp.com/login?username=p&password=p');		
-	if (check){
-		alert("YES");
-	} else {
-		alert("NO");
-	}
-}
+const axios = require('axios')  
+
+
+function results(){
+	axios.get('https://opposum-api.herokuapp.com/login', {
+			params:{
+					username: getUser(),
+					password: getPassword()
+			}			
+		})
+	.then(function(response){			
+		console.log(response.data); //RESPONSE.DATA is the true or false value, redirect to diff page here.
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+}	
+
 
 const Home = () => (
 	<div>				
@@ -60,7 +66,7 @@ const Home = () => (
 		</nav>			
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
 		<div className= "container-fluid">
-			<form onSubmit = {toSubmit} className= "form-group">
+			<form onSubmit = {results} className= "form-group">
 				<div className= "form-inline justify-content-center">
 					<label htmlFor= "username" style ={{margin: 8 }}>Username</label>
 					<input className="form-control" type="username" id="username"/>
