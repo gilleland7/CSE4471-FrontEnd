@@ -3,38 +3,38 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
 import Results from './searchResults';
 
-function App() {  
+function App() {
    const center = {
  	  textAlign: "center"
    };
 
   return (
-	 <div style = {center} className = "Banner">				
-		<div className= "next">			
+	 <div style = {center} className = "Banner">
+		<div className= "next">
 			<Router>
 				<Switch>
 					<Route path="/" exact component ={Home} />
 					<Route path="/Results" component={Results} />
-					<Route path="/Sign" component={Sign} />					
+					<Route path="/Sign" component={Sign} />
 				</Switch>
 			</Router>
-		</div>		
+		</div>
 	 </div>
   );
 }
 
-function getUser(){	
-	var user = document.getElementById("username");
-	var string = user.value
-	return string
+function getUser(){
+	var user = (document.getElementById("username")).value;
+	// var string = user.value
+	return user
 }
 function getPassword(){
-	var pass = document.getElementById("password");
-	var string = pass.value;
-	return string;
+	var pass = (document.getElementById("password")).value;
+	// var string = pass.value;
+	return pass;
 }
 
-const axios = require('axios')  
+const axios = require('axios')
 
 
 function results(){
@@ -42,29 +42,29 @@ function results(){
 			params:{
 					username: getUser(),
 					password: getPassword()
-			}			
+			}
 		})
-	.then(function(response){			
+	.then(function(response){
 		console.log(response.data); //RESPONSE.DATA is the true or false value, redirect to diff page here.
 	})
 	.catch(function(error) {
 		console.log(error);
 	});
-}	
+}
 
 
 const Home = () => (
-	<div>				
-		<nav className= "navbar navbar-dark bg-dark">		
-			<span className= "navbar-brand">Inject Me Corp</span>			
+	<div>
+		<nav className= "navbar navbar-dark bg-dark">
+			<span className= "navbar-brand">Inject Me Corp</span>
 			<Link to='/Results'>
-			<form className= "form-inline">				
+			<form className= "form-inline">
 					<input className="form-control" type="search" placeholder="Search" aria-label="search"></input>
-					<button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>				
-			</form>	
-			</Link>			
-		</nav>			
-		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
+					<button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			</Link>
+		</nav>
+		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
 			<form onSubmit = {results} className= "form-group">
 				<div className= "form-inline justify-content-center">
@@ -77,11 +77,11 @@ const Home = () => (
 				</div>
 				<button type= "submit" className= "btn btn-secondary">Login</button>
 			</form>
-		
+
 		<Link to='/Sign'>
 			<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
-		</Link>		
-		</div> 
+		</Link>
+		</div>
 	</div>
 );
 
