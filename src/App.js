@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
 import Results from './searchResults';
 import axios from 'axios';
-
 
 
 
@@ -12,7 +11,7 @@ function App() {
  	  textAlign: "center"
    };
    
- const axios = require('axios')  
+ //const axios = require('axios')  
 
   return (
 	 <div style = {center} className = "Banner">				
@@ -41,9 +40,8 @@ function getPassword(){
 function toSubmit(){
 	
 var check = axios.get('https://opposum-api.herokuapp.com/login?username='+getUser() +'&password='+getPassword(), {
-	headers: {'Access-Control-Allow-Origin': '*', 'crossorigin':'true'}
-});
-		
+	headers: {'Access-Control-Allow-Origin': '*'}
+});		
 	if (check){
 		alert("YES");
 	} else {
@@ -52,33 +50,32 @@ var check = axios.get('https://opposum-api.herokuapp.com/login?username='+getUse
 }
 
 const Home = () => (
-
 	<div>				
-		<nav class= "navbar navbar-dark bg-dark">		
-			<span class= "navbar-brand">Inject Me Corp</span>			
+		<nav className= "navbar navbar-dark bg-dark">		
+			<span className= "navbar-brand">Inject Me Corp</span>			
 			<Link to='/Results'>
-			<form class= "form-inline">				
-					<input class="form-control" type="search" placeholder="Search" aria-label="search"></input>
-					<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>				
+			<form className= "form-inline">				
+					<input className="form-control" type="search" placeholder="Search" aria-label="search"></input>
+					<button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>				
 			</form>	
 			</Link>			
 		</nav>			
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
-		<div class= "container-fluid">
-			<form onSubmit = {toSubmit} class= "form-group">
-				<div class= "form-inline justify-content-center">
+		<div className= "container-fluid">
+			<form onSubmit = {toSubmit} className= "form-group">
+				<div className= "form-inline justify-content-center">
 					<label htmlFor= "username" style ={{margin: 8 }}>Username</label>
-					<input class="form-control" type="username" id="username"/>
+					<input className="form-control" type="username" id="username"/>
 				</div>
-				<div class= "form-inline justify-content-center">
+				<div className= "form-inline justify-content-center">
 					<label htmlFor= "password" style ={{margin: 10 }}>Password</label>
-					<input class="form-control" type="password" id="password"/>
+					<input className="form-control" type="password" id="password"/>
 				</div>
-				<button type= "submit" class= "btn btn-secondary">Login</button>
+				<button type= "submit" className= "btn btn-secondary">Login</button>
 			</form>
 		
 		<Link to='/Sign'>
-			<button type= "button" class= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
+			<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
 		</Link>		
 		</div> 
 	</div>
