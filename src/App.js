@@ -39,9 +39,7 @@ function getPassword(){
 
 function toSubmit(){
 	
-var check = axios.get('https://opposum-api.herokuapp.com/login?username='+getUser() +'&password='+getPassword(), {
-	headers: {'Access-Control-Allow-Origin': '*'}
-});		
+var check = axios.get('https://opposum-api.herokuapp.com/login?username=p&password=p');		
 	if (check){
 		alert("YES");
 	} else {
