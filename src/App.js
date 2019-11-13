@@ -64,8 +64,9 @@ function search(){
 					searchField: getSearch()
 			}
 		})
-	.then(function(response){	
-		window.name = window.name+"results="+response.data[1]; //Temporary
+	.then(function(response){
+		
+		window.name = window.name+"results="+response.data[1]; 
 	})
 	.catch(function(error) {		
 		console.log(error);
@@ -77,23 +78,22 @@ const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
 			<span className= "navbar-brand">Inject Me Corp</span>				
-				<form onSubmit = {search} className= "form-inline">
-						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID"></input>
-						<Link to='/Results'>
-							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
-						</Link>
-				</form>				
+				<form action ='./Results' onSubmit = {search} className= "form-inline">
+						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>							
+							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>							
+				</form>	
 		</nav>
+		
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
 			<form onSubmit = {results} className= "form-group">
 				<div className= "form-inline justify-content-center">
 					<label htmlFor= "username" style ={{margin: 8 }}>Username</label>
-					<input className="form-control" type="username" id="username"/>
+					<input className="form-control" type="username" id="username" required/>
 				</div>
 				<div className= "form-inline justify-content-center">
 					<label htmlFor= "password" style ={{margin: 10 }}>Password</label>
-					<input className="form-control" type="password" id="password"/>
+					<input className="form-control" type="password" id="password" required/>
 				</div>
 				<button type= "submit" className= "btn btn-secondary">Login</button>
 			</form>
