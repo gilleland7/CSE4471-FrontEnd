@@ -44,25 +44,47 @@ function results(){
 					password: getPassword()
 			}
 		})
-	.then(function(response){
+	.then(function(response){		
+		window.name = getUser();			
 		console.log(response.data); //RESPONSE.DATA is the true or false value, redirect to diff page here.
 	})
 	.catch(function(error) {
 		console.log(error);
 	});
 }
+function getSearch(){
+	var search = (document.getElementById("searchID")).value;
+	return search;
+}
 
+function search(){	
+	axios.get('https://opposum-api.herokuapp.com/search', {
+			params:{
+					username: window.name,
+					searchField: getSearch()
+			}
+		})
+	.then(function(response){	
+		//This block doesn't run
+		window.name = window.name+"results="+response.data[1]; //Temporary
+		window.location.href = "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_name2";
+	})
+	.catch(function(error) {		
+		console.log(error);
+	});
+	
+}
 
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
 			<span className= "navbar-brand">Inject Me Corp</span>
-			<Link to='/Results'>
-			<form className= "form-inline">
-					<input className="form-control" type="search" placeholder="Search" aria-label="search"></input>
-					<button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-			</form>
-			</Link>
+				
+				<form onSubmit = {search} className= "form-inline">
+						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID"></input>
+						<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
+				</form>
+				
 		</nav>
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
