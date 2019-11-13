@@ -65,9 +65,7 @@ function search(){
 			}
 		})
 	.then(function(response){	
-		//This block doesn't run
 		window.name = window.name+"results="+response.data[1]; //Temporary
-		window.location.href = "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_name2";
 	})
 	.catch(function(error) {		
 		console.log(error);
@@ -78,13 +76,13 @@ function search(){
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
-			<span className= "navbar-brand">Inject Me Corp</span>
-				
+			<span className= "navbar-brand">Inject Me Corp</span>				
 				<form onSubmit = {search} className= "form-inline">
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID"></input>
-						<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
-				</form>
-				
+						<Link to='/Results'>
+							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
+						</Link>
+				</form>				
 		</nav>
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
