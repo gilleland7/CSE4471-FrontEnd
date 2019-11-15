@@ -25,32 +25,35 @@ function App() {
 
 function getUser(){
 	var user = (document.getElementById("username")).value;
-	// var string = user.value
 	return user
 }
 function getPassword(){
 	var pass = (document.getElementById("password")).value;
-	// var string = pass.value;
 	return pass;
 }
 
 const axios = require('axios')
 
-
 function results(){
-	axios.get('https://opposum-api.herokuapp.com/login', {
-			params:{
-					username: getUser(),
-					password: getPassword()
+		axios.get('https://opposum-api.herokuapp.com/login', {
+				params:{
+						username: getUser(),
+						password: getPassword()
+				}
+			})
+		.then(function(response){				
+			window.name = getUser()+"?"+response.data;			
+			console.log(response.data);
+		
+			if(!response.data){
+				alert("Wrong username/password");
+				window.location.reload(false); //Reload page if login fails
 			}
 		})
-	.then(function(response){		
-		window.name = getUser();			
-		console.log(response.data); //RESPONSE.DATA is the true or false value, redirect to diff page here.
-	})
-	.catch(function(error) {
-		console.log(error);
-	});
+		.catch(function(error) {
+			console.log(error);
+		});
+		
 }
 function getSearch(){
 	var search = (document.getElementById("searchID")).value;
@@ -58,6 +61,14 @@ function getSearch(){
 }
 
 function search(){	
+	var loggedIn;
+	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
+	
+	if (data == false){
+		alert("ERROR - Must be logged in to search");
+		loggedIn = false;
+	} else {
+		loggedIn = true;
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					username: window.name,
@@ -65,20 +76,36 @@ function search(){
 			}
 		})
 	.then(function(response){
-		
-		window.name = window.name+"results="+response.data[1]; 
+			var index = window.name.indexOf("?");
+			var name = window.name.substring(0,index);
+			
+			window.name = name+"results="+response.data[1]+"?"+data; 
 	})
 	.catch(function(error) {		
 		console.log(error);
 	});
+	}
+	return loggedIn;
+}
+
+function checkLogIn(){
+	var link;
+	var data = window.name.substring(window.name.indexOf('?')+1);
 	
+	if (data == false ){
+		link = '';
+	} else {
+		link = './Results';
+		window.name = window.name.substring(0, window.name.indexOf('?'));
+	}	
+	return link;
 }
 
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
 			<span className= "navbar-brand">Inject Me Corp</span>				
-				<form action ='./Results' onSubmit = {search} className= "form-inline">
+				<form action ={checkLogIn} onSubmit ={search} className= "form-inline">
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>							
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>							
 				</form>	
