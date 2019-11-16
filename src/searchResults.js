@@ -1,5 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App.js';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 const axios = require('axios')
 
@@ -43,7 +45,9 @@ function Search() {
    
 	 <div style = {center} className = "Banner">		 
 		<nav className= "navbar navbar-dark bg-dark">
-			<span className= "navbar-brand">Inject Me Corp</span>
+			<Link to='/'>
+				<span className= "navbar-brand">Inject Me Corp</span>
+			</Link>
 			<form onSubmit = {searchQuery} className= "form-inline">
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
