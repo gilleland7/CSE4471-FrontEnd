@@ -24,12 +24,12 @@ function App() {
 }
 
 function getUser(){
-	
+
 	var user = (document.getElementById("username")).value;
 	return user
 }
 function getPassword(){
-	
+
 	var pass = (document.getElementById("password")).value;
 	return pass;
 }
@@ -37,20 +37,20 @@ function getPassword(){
 const axios = require('axios')
 
 function results(){
-			
+
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
 						password: getPassword()
 				}
 			})
-		.then(function(response){	
-			
+		.then(function(response){
+
 			window.name = getUser()+"?"+response.data;
 			console.log(response.data);
-	
+
 			if(!response.data){
-				
+
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
 			}
@@ -65,24 +65,23 @@ function getSearch(){
 	return search;
 }
 
-<<<<<<< HEAD
+
 function search(){
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
 	if (data === false){
 		alert("ERROR - Must be logged in to search");
 	} else {
-=======
-function search(){	
+
+function search(){
 	var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
-	
+
 	if (data == false){
 		alert("ERROR - Must be logged in to search");
 		loggedIn = false;
 	} else {
 		loggedIn = true;
->>>>>>> parent of a4bbad8... Clunky fix for search bar
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					username: window.name,
@@ -92,20 +91,18 @@ function search(){
 	.then(function(response){
 			var index = window.name.indexOf("?");
 			var name = window.name.substring(0,index);
-<<<<<<< HEAD
+
 
 			window.name = name+"results="+response.data[1]+"?"+data;
 			checkLogIn();
-=======
-			
-			window.name = name+"results="+response.data[1]+"?"+data; 
->>>>>>> parent of a4bbad8... Clunky fix for search bar
+
+
+			window.name = name+"results="+response.data[1]+"?"+data;
 	})
 	.catch(function(error) {
 		console.log(error);
 	});
 	}
-<<<<<<< HEAD
 
 	return false;
 }
@@ -117,40 +114,36 @@ function checkLogIn(){
 		window.name = window.name.substring(0, window.name.indexOf('?'));
 	}
 	return false;
-=======
+
 	return loggedIn;
 }
 
 function checkLogIn(){
 	var link;
 	var data = window.name.substring(window.name.indexOf('?')+1);
-	
+
 	if (data == false ){
 		link = '';
 	} else {
 		link = './Results';
 		window.name = window.name.substring(0, window.name.indexOf('?'));
-	}	
+	}
 	return link;
->>>>>>> parent of a4bbad8... Clunky fix for search bar
 }
 
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
-<<<<<<< HEAD
 			<span className= "navbar-brand">Inject Me Corp</span>
 				<form action ='./Results' onSubmit ={search} className= "form-inline">
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
 				</form>
-=======
-			<span className= "navbar-brand">Inject Me Corp</span>				
+			<span className= "navbar-brand">Inject Me Corp</span>
 				<form action ={checkLogIn} onSubmit ={search} className= "form-inline">
-						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>							
-							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>							
-				</form>	
->>>>>>> parent of a4bbad8... Clunky fix for search bar
+						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
+							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
+				</form>
 		</nav>
 
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />

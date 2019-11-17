@@ -1,9 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< HEAD
 import {Link} from 'react-router-dom';
-=======
->>>>>>> parent of a4bbad8... Clunky fix for search bar
 
 const axios = require('axios')
 
@@ -22,30 +19,30 @@ function getSearch(){
 	return search;
 }
 
-function searchQuery(){	
+function searchQuery(){
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					username: window.name,
 					searchField: getSearch()
 			}
 		})
-	.then(function(response){	
-		window.name = window.name+"results="+response.data[1]; 
+	.then(function(response){
+		window.name = window.name+"results="+response.data[1];
 		window.location.reload(false);
 	})
-	.catch(function(error) {		
+	.catch(function(error) {
 		console.log(error);
 	});
-	
+
 }
-function Search() { 
+function Search() {
    const center = {
  	  textAlign: "center"
-   }   
-   
+   }
+
    return (
-   
-	 <div style = {center} className = "Banner">		 
+
+	 <div style = {center} className = "Banner">
 		<nav className= "navbar navbar-dark bg-dark">
 			<span className= "navbar-brand">Inject Me Corp</span>
 			<form onSubmit = {searchQuery} className= "form-inline">
@@ -53,9 +50,9 @@ function Search() {
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
 				</form>
 		</nav>
-		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />	
+		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className = "Results" id = 'Results'>
-			 <button onClick={set} type= "submit" className= "btn btn-secondary">Show Results</button>			
+			 <button onClick={set} type= "submit" className= "btn btn-secondary">Show Results</button>
 		</div>
 		<hr/>
 	</div>
