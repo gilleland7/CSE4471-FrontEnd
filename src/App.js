@@ -43,17 +43,19 @@ function results(){
 						username: getUser(),
 						password: getPassword()
 				}
-			})
+			}, {timeout:1})
 		.then(function(response){
 
-			window.name = getUser()+"?"+response.data;
-			console.log(response.data);
+			window.name = getUser()+"?"+response.data.success;
+			console.log(response.data.success);
 
-			if(!response.data){
+			if(!response.data.success){
 
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
-			}
+			} else{
+        console.log("Success");
+      }
 		})
 		.catch(function(error) {
 			console.log(error);
