@@ -24,10 +24,12 @@ function App() {
 }
 
 function getUser(){
+	
 	var user = (document.getElementById("username")).value;
 	return user
 }
 function getPassword(){
+	
 	var pass = (document.getElementById("password")).value;
 	return pass;
 }
@@ -35,17 +37,20 @@ function getPassword(){
 const axios = require('axios')
 
 function results(){
+			
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
 						password: getPassword()
 				}
 			})
-		.then(function(response){
+		.then(function(response){	
+			
 			window.name = getUser()+"?"+response.data;
 			console.log(response.data);
-
+	
 			if(!response.data){
+				
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
 			}
