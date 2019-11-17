@@ -99,18 +99,18 @@ function pass(){
 }
 
 function postToDB(){
-  axios.post('https://opposum-api.herokuapp.com/Signup',{
+  axios.post('https://opposum-api.herokuapp.com/register',{
     params:{
       firstname: fName(),
       lastname: lName(),
-      dateofbirth: dateOfBirth(),
-      ssn: socialSec(),
+      dateOfBirth: dateOfBirth(),
+      ssNum: socialSec(),
       username: user(),
       password: pass(),
     }
   })
   .then(response => {
-    console.log("success");
+    console.log(response);
   })
 }
 
