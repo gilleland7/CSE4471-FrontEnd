@@ -41,10 +41,10 @@ function results(){
 						password: getPassword()
 				}
 			})
-		.then(function(response){				
-			window.name = getUser()+"?"+response.data;			
+		.then(function(response){
+			window.name = getUser()+"?"+response.data;
 			console.log(response.data);
-		
+
 			if(!response.data){
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
@@ -53,19 +53,19 @@ function results(){
 		.catch(function(error) {
 			console.log(error);
 		});
-		
+
 }
 function getSearch(){
 	var search = (document.getElementById("searchID")).value;
 	return search;
 }
 
-function search(){	
+function search(){
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
-	
-	if (data == false){			
+
+	if (data === false){
 		alert("ERROR - Must be logged in to search");
-	} else {		
+	} else {
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					username: window.name,
@@ -75,23 +75,23 @@ function search(){
 	.then(function(response){
 			var index = window.name.indexOf("?");
 			var name = window.name.substring(0,index);
-			
-			window.name = name+"results="+response.data[1]+"?"+data; 			
+
+			window.name = name+"results="+response.data[1]+"?"+data;
 			checkLogIn();
 	})
-	.catch(function(error) {		
+	.catch(function(error) {
 		console.log(error);
 	});
 	}
-	
+
 	return false;
 }
 
-function checkLogIn(){		
+function checkLogIn(){
 	var data = window.name.substring(window.name.indexOf('?')+1);
-	
-	if (data == true ){
-		window.name = window.name.substring(0, window.name.indexOf('?'));		
+
+	if (data === true ){
+		window.name = window.name.substring(0, window.name.indexOf('?'));
 	}
 	return false;
 }
@@ -99,13 +99,13 @@ function checkLogIn(){
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
-			<span className= "navbar-brand">Inject Me Corp</span>				
+			<span className= "navbar-brand">Inject Me Corp</span>
 				<form action ='./Results' onSubmit ={search} className= "form-inline">
-						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>							
-							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>							
-				</form>	
+						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
+							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
+				</form>
 		</nav>
-		
+
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
 			<form onSubmit = {results} className= "form-group">
