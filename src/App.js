@@ -45,7 +45,7 @@ function results(){
 				}
 			}, {timeout:1})
 		.then(function(response){
-
+			alert("Success");
 			window.name = getUser()+"?"+response.data.success;
 			console.log(response.data.success);
 
