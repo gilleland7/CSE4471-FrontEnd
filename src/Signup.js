@@ -115,7 +115,7 @@ function postToDB(){
 }
 
 const btn = document.getElementById("sub");
-//btn.addEventListener('submit', postToDB);
+btn.addEventListener('submit', postToDB);
 
 
 export default Signup;

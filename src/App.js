@@ -45,7 +45,7 @@ function results(){
 				}
 			}, {timeout:1})
 		.then(function(response){
-			
+
 			window.name = getUser()+"?"+response.data.success;
 			console.log(response.data.success);
 
@@ -68,15 +68,15 @@ function getSearch(){
 }
 
 function search(){
-	var loggedIn;
+	//var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
-	if (data == false){
+	if (data === false){
 		alert("ERROR - Must be logged in to search");
-		loggedIn = false;
+		//loggedIn = false;
 	} else {
 		alert("Success");
-		loggedIn = true;
+		//loggedIn = true;
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					username: window.name,
@@ -119,7 +119,7 @@ const Home = () => (
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
 				</form>
-			
+
 		</nav>
 
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
