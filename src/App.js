@@ -45,7 +45,7 @@ function results(){
 				}
 			}, {timeout:1})
 		.then(function(response){
-			alert("Success");
+			
 			window.name = getUser()+"?"+response.data.success;
 			console.log(response.data.success);
 
@@ -75,6 +75,7 @@ function search(){
 		alert("ERROR - Must be logged in to search");
 		loggedIn = false;
 	} else {
+		alert("Success");
 		loggedIn = true;
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
