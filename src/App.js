@@ -67,14 +67,6 @@ function getSearch(){
 	return search;
 }
 
-
-function search(){
-	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
-
-	if (data === false){
-		alert("ERROR - Must be logged in to search");
-	} else {
-
 function search(){
 	var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
@@ -116,21 +108,6 @@ function checkLogIn(){
 		window.name = window.name.substring(0, window.name.indexOf('?'));
 	}
 	return false;
-
-	return loggedIn;
-}
-
-function checkLogIn(){
-	var link;
-	var data = window.name.substring(window.name.indexOf('?')+1);
-
-	if (data == false ){
-		link = '';
-	} else {
-		link = './Results';
-		window.name = window.name.substring(0, window.name.indexOf('?'));
-	}
-	return link;
 }
 
 const Home = () => (
