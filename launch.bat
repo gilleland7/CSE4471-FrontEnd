@@ -1,4 +1,4 @@
 @echo off
-cd %~dp0
+cd C:\Users\gille\Documents\GitHub\CSE4471-FrontEnd
 set BROWSER=chrome
 npm start
