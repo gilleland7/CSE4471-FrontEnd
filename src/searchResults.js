@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom';
 const axios = require('axios')
 
 function set(){
-	var array = window.name.split("?");
+	var array = window.name.split("=");
 	var data = "Results: " + array[0];
-	if (array[1] === ("true")) {
+	if (array[0]) {
 		document.getElementById('Results').innerHTML = data;
 	} else {
 		document.getElementById('Results').innerHTML = "Search Error";
