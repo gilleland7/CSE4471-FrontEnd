@@ -118,11 +118,7 @@ const Home = () => (
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
 				</form>
-			<span className= "navbar-brand">Inject Me Corp</span>
-				<form action ={checkLogIn} onSubmit ={search} className= "form-inline">
-						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
-							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
-				</form>
+			
 		</nav>
 
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
