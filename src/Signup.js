@@ -4,58 +4,58 @@ import axios from 'axios';
 function Signup(){
 
     return(
-      <div class= "sigUupForm">
-			   <nav class= "navbar navbar-dark bg-dark">
-				     <span class= "navbar-brand">Inject Me Corp</span>
+      <div className= "sigUupForm">
+			   <nav className= "navbar navbar-dark bg-dark">
+				     <span className= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
          <form onSubmit={postToDB} >
-              <div class= "form-group row">
-                  <label htmlFor= "firstname" class= "col-sm-2 col-form-label">First Name</label>
-                    <div class= "col-sm-10">
-                      <input class="form-control" placeholder="First Name" required/>
+              <div className= "form-group row">
+                  <label htmlFor= "firstname" className= "col-sm-2 col-form-label">First Name</label>
+                    <div className= "col-sm-10">
+                      <input className="form-control" placeholder="First Name" id="firstname" required/>
                     </div>
               </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "lastname" class= "col-sm-2 col-form-label">Last Name</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Last Name" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "lastname" className= "col-sm-2 col-form-label">Last Name</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Last Name" id="lastname" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "dob" class= "col-sm-2 col-form-label">Date of Birth</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "DOB" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "dob" className= "col-sm-2 col-form-label">Date of Birth</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "DOB" id="dob" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "address" class= "col-sm-2 col-form-label">Address</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Address" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "address" className= "col-sm-2 col-form-label">Address</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Address" id="address" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "ssn" class= "col-sm-2 col-form-label">SSN</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "SSN" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "ssn" className= "col-sm-2 col-form-label">SSN</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "SSN" id="ssn" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "username" class= "col-sm-2 col-form-label">Username</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Username" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "username" className= "col-sm-2 col-form-label">Username</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Username" id="username" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "password" class= "col-sm-2 col-form-label">Password</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Password" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "password" className= "col-sm-2 col-form-label">Password</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Password" id="password" required/>
                         </div>
                     </div>
 					 <div className = "col text-center">
@@ -97,7 +97,12 @@ function pass(){
   return passW;
 }
 
-function postToDB(){
+function add(){
+	var add = (document.getElementById("address")).value;
+	return add;
+}
+
+function postToDB(){	
   axios.post('https://opposum-api.herokuapp.com/register',{
     params:{
       firstname: fName(),
@@ -105,15 +110,19 @@ function postToDB(){
       dateOfBirth: dateOfBirth(),
       ssNum: socialSec(),
       username: user(),
+	  address: add(),
       password: pass(),
     }
   })
   .then(response => {
+	  alert("HERE");
     console.log(response);
-  })
+  }).catch(function(error) {
+		console.log(error);
+	});
 }
 
-const btn = document.getElementById("sub");
+//const btn = document.getElementById("sub");
 
 
 export default Signup;
