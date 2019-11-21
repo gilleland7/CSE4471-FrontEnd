@@ -182,6 +182,7 @@ function postToDB(){
 	})
 	.then(response => {	  
 		console.log(response);
+		alert("EH");
 	}).catch(function(error) {
 		alert("This account has already been made")
 		window.location.reload(false); //Reload page if login fails
