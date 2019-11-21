@@ -87,7 +87,6 @@ function search(){
 			var index = window.name.indexOf("?");
 			var name = window.name.substring(0,index);
 
-
 			window.name = name+"results="+response.data[1]+"?"+data;
 			checkLogIn();
 
@@ -119,7 +118,6 @@ const Home = () => (
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
 				</form>
-
 		</nav>
 
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />

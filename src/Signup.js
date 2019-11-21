@@ -62,7 +62,7 @@ function Signup(){
                     <div className= "form-group row">
                         <label htmlFor= "password" className= "col-sm-2 col-form-label">Confirm Password</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "Password" id="password" required/>
+                            <input className= "form-control" placeholder= "Password" id="passwordConfirm" required/>
                         </div>
                     </div>
 					 <div className = "col text-center">
@@ -109,30 +109,85 @@ function add(){
 	return add;
 }
 
+function check(){
+	var check = true;
 	
-function postToDB(){
-
-  axios.post('https://opposum-api.herokuapp.com/register',{
-    params:{
-      firstname: fName(),
-      lastname: lName(),
-      dateOfBirth: dateOfBirth(),
-      ssNum: socialSec(),
-      username: user(),
-	  address: add(),
-      password: pass(),
+	var password = (document.getElementById("password")).value;
+	var confirm = (document.getElementById("passwordConfirm")).value;
+	
+	if (password != confirm){
+		check = false;
+	}
+	
+	if (password.length < 10){
+		check = false;
+	}
+	
+	var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+	 if (!pattern.test(password)) {	
+		alert("Password missing a special character");
+        check = false;
     }
-  })
-  .then(response => {	  
-    console.log(response);
-  }).catch(function(error) {
-	  alert("This account has already been made")
-	  window.location.reload(false); //Reload page if login fails
-	  console.log(error);
-	});
+	
+	var i = 0;
+	var capital = false;
+	var lower = false;
+	var num = false;	
+	
+	while (i < password.length){
+		var character = password.charAt(i);
+		if (character == character.toLowerCase()){
+			lower = true;			
+		}
+		if (character == character.toUpperCase()){
+			capital = true;
+		}
+		
+		if (character >= '0' && character <= '9'){
+			num = true;
+		}	
+		i++;		
+	}
+	if (!lower){			
+			check = false;
+			alert("Password missing lower case character");
+		}
+		
+		if (!capital){
+			alert("Password missing a lower case character");
+			check = false;
+		}
+		
+		if (!num){
+			alert("Password missing a number");
+			check = false;
+		}			
+	
+	return check;
 }
-
-//const btn = document.getElementById("sub");
-
+	
+	
+function postToDB(){	
+  //if(check()){ //Password feature
+	axios.post('https://opposum-api.herokuapp.com/register',{
+		params:{
+		firstname: fName(),
+		lastname: lName(),
+		dateOfBirth: dateOfBirth(),
+		ssNum: socialSec(),
+		username: user(),
+		address: add(),
+		password: pass(),
+		}
+	})
+	.then(response => {	  
+		console.log(response);
+	}).catch(function(error) {
+		alert("This account has already been made")
+		window.location.reload(false); //Reload page if login fails
+		console.log(error);
+		});
+	//}
+}
 
 export default Signup;
