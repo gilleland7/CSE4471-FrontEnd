@@ -181,6 +181,7 @@ function postToDB(){
 		}
 	})
 	.then(response => {	  
+		alert("Success");
 		console.log(response);
 	}).catch(function(error) {
 		alert("This account has already been made")
