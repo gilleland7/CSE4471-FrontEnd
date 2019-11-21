@@ -103,6 +103,8 @@ function add(){
 }
 
 function postToDB(){	
+
+
   axios.post('https://opposum-api.herokuapp.com/register',{
     params:{
       firstname: fName(),
@@ -114,11 +116,12 @@ function postToDB(){
       password: pass(),
     }
   })
-  .then(response => {
-	  alert("HERE");
+  .then(response => {	  
     console.log(response);
   }).catch(function(error) {
-		console.log(error);
+	  alert("This account has already been made")
+	  window.location.reload(false); //Reload page if login fails
+	  console.log(error);
 	});
 }
 
