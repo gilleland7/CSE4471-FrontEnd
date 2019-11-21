@@ -4,65 +4,72 @@ import axios from 'axios';
 function Signup(){
 
     return(
-      <div class= "sigUupForm">
-			   <nav class= "navbar navbar-dark bg-dark">
-				     <span class= "navbar-brand">Inject Me Corp</span>
+      <div className= "sigUupForm">
+			   <nav className= "navbar navbar-dark bg-dark">
+				     <span className= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
          <form onSubmit={postToDB} >
-              <div class= "form-group row">
-                  <label htmlFor= "firstname" class= "col-sm-2 col-form-label">First Name</label>
-                    <div class= "col-sm-10">
-                      <input class="form-control" placeholder="First Name" required/>
+              <div className= "form-group row">
+                  <label htmlFor= "firstname" className= "col-sm-2 col-form-label">First Name</label>
+                    <div className= "col-sm-10">
+                      <input className="form-control" placeholder="First Name" required/>
                     </div>
               </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "lastname" class= "col-sm-2 col-form-label">Last Name</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Last Name" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "lastname" className= "col-sm-2 col-form-label">Last Name</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Last Name" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "dob" class= "col-sm-2 col-form-label">Date of Birth</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "DOB" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "dob" className= "col-sm-2 col-form-label">Date of Birth</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "DOB" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "address" class= "col-sm-2 col-form-label">Address</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Address" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "address" className= "col-sm-2 col-form-label">Address</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Address" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "ssn" class= "col-sm-2 col-form-label">SSN</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "SSN" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "ssn" className= "col-sm-2 col-form-label">SSN</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "SSN" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "username" class= "col-sm-2 col-form-label">Username</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Username" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "username" className= "col-sm-2 col-form-label">Username</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Username" required/>
                         </div>
                     </div>
 
-                    <div class= "form-group row">
-                        <label htmlFor= "password" class= "col-sm-2 col-form-label">Password</label>
-                        <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Password" required/>
+                    <div className= "form-group row">
+                        <label htmlFor= "password" className= "col-sm-2 col-form-label">Password</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Password" type="password" required/>
+                        </div>
+                    </div>
+
+                    <div className= "form-group row">
+                        <label htmlFor= "password" className= "col-sm-2 col-form-label">Confirm Password</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Password" type="password" required/>
                         </div>
                     </div>
 					 <div className = "col text-center">
-						<button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
+						<button type="onSubmit" className="btn btn-secondary">Submit</button>
 					</div>
-                </form>
-       
+          </form>
+
         </div>
     );
 }
@@ -80,6 +87,11 @@ function lName(){
 function dateOfBirth(){
   var dob = (document.getElementById("dob")).value;
   return dob;
+}
+
+function address(){
+  var address = (document.getElementById("address")).value;
+  return address;
 }
 
 function socialSec(){
@@ -103,6 +115,7 @@ function postToDB(){
       firstname: fName(),
       lastname: lName(),
       dateOfBirth: dateOfBirth(),
+      address: address(),
       ssNum: socialSec(),
       username: user(),
       password: pass(),
@@ -112,8 +125,5 @@ function postToDB(){
     console.log(response);
   })
 }
-
-const btn = document.getElementById("sub");
-
 
 export default Signup;
