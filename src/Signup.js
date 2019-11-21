@@ -58,11 +58,18 @@ function Signup(){
                             <input className= "form-control" placeholder= "Password" id="password" required/>
                         </div>
                     </div>
+
+                    <div className= "form-group row">
+                        <label htmlFor= "password" className= "col-sm-2 col-form-label">Confirm Password</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Password" id="password" required/>
+                        </div>
+                    </div>
 					 <div className = "col text-center">
 						<button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
 					</div>
                 </form>
-       
+
         </div>
     );
 }
@@ -102,8 +109,8 @@ function add(){
 	return add;
 }
 
-function postToDB(){	
-
+	
+function postToDB(){
 
   axios.post('https://opposum-api.herokuapp.com/register',{
     params:{
