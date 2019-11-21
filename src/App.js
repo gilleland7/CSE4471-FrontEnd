@@ -50,7 +50,6 @@ function results(){
 			console.log(response.data.success);
 
 			if(!response.data.success){
-
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
 			} else{

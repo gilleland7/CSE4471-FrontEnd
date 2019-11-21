@@ -9,61 +9,60 @@ function Signup(){
 				     <span class= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
-         <form >
+         <form onSubmit={postToDB} >
               <div class= "form-group row">
                   <label htmlFor= "firstname" class= "col-sm-2 col-form-label">First Name</label>
                     <div class= "col-sm-10">
-                      <input class="form-control" placeholder="First Name"/>
+                      <input class="form-control" placeholder="First Name" required/>
                     </div>
               </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "lastname" class= "col-sm-2 col-form-label">Last Name</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Last Name"/>
+                            <input class= "form-control" placeholder= "Last Name" required/>
                         </div>
                     </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "dob" class= "col-sm-2 col-form-label">Date of Birth</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "DOB"/>
+                            <input class= "form-control" placeholder= "DOB" required/>
                         </div>
                     </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "address" class= "col-sm-2 col-form-label">Address</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Address"/>
+                            <input class= "form-control" placeholder= "Address" required/>
                         </div>
                     </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "ssn" class= "col-sm-2 col-form-label">SSN</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "SSN"/>
+                            <input class= "form-control" placeholder= "SSN" required/>
                         </div>
                     </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "username" class= "col-sm-2 col-form-label">Username</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Username"/>
+                            <input class= "form-control" placeholder= "Username" required/>
                         </div>
                     </div>
 
                     <div class= "form-group row">
                         <label htmlFor= "password" class= "col-sm-2 col-form-label">Password</label>
                         <div class= "col-sm-10">
-                            <input class= "form-control" placeholder= "Password"/>
+                            <input class= "form-control" placeholder= "Password" required/>
                         </div>
                     </div>
+					 <div className = "col text-center">
+						<button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
+					</div>
                 </form>
-
-            <div className = "col text-center">
-              <button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
-            </div>
-
+       
         </div>
     );
 }
