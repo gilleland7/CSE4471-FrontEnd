@@ -29,7 +29,7 @@ function getUser(){
 	return user
 }
 function getPassword(){
-
+	
 	var pass = (document.getElementById("password")).value;
 	return pass;
 }
@@ -45,7 +45,7 @@ function results(){
 				}
 			}, {timeout:1})
 		.then(function(response){
-
+			
 			window.name = getUser()+"?"+response.data.success;
 			console.log(response.data.success);
 
@@ -54,8 +54,9 @@ function results(){
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
 			} else{
-        console.log("Success");
-      }
+				alert("Success");
+				console.log("Success");
+			}
 		})
 		.catch(function(error) {
 			console.log(error);
@@ -75,7 +76,7 @@ function search(){
 		alert("ERROR - Must be logged in to search");
 		//loggedIn = false;
 	} else {
-		alert("Success");
+		
 		//loggedIn = true;
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
