@@ -67,7 +67,7 @@ function Signup(){
                     </div>
 					 <div className = "col text-center">
 						<button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
-					</div>
+					</div>					 
                 </form>
 
         </div>
@@ -182,7 +182,6 @@ function postToDB(){
 	})
 	.then(response => {	  
 		console.log(response);
-		alert("EH");
 	}).catch(function(error) {
 		alert("This account has already been made")
 		window.location.reload(false); //Reload page if login fails
