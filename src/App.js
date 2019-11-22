@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
 import Results from './searchResults';
 
+
 function App() {
    const center = {
  	  textAlign: "center"
@@ -110,6 +111,12 @@ function checkLogIn(){
 	return false;
 }
 
+
+
+function auth(){
+	
+}
+
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">
@@ -135,6 +142,7 @@ const Home = () => (
 				<Link to='/Sign'>
 					<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
 				</Link>
+				<button type= "submit" className= "btn btn-secondary" style ={{margin: 10 }} onClick={auth}>Authenticate</button>
 			</form>	
 		</div>
 	</div>
