@@ -119,7 +119,7 @@ function check(){
 	var password = (document.getElementById("password")).value;
 	var confirm = (document.getElementById("passwordConfirm")).value;
 	
-	if (password != confirm){
+	if (password !== confirm){
 		check = false;
 	}
 	
@@ -127,7 +127,7 @@ function check(){
 		check = false;
 	}
 	
-	var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+	var pattern = new RegExp(/[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/);
 	 if (!pattern.test(password)) {	
 		alert("Password missing a special character");
         check = false;
@@ -140,10 +140,10 @@ function check(){
 	
 	while (i < password.length){
 		var character = password.charAt(i);
-		if (character == character.toLowerCase()){
+		if (character === character.toLowerCase()){
 			lower = true;			
 		}
-		if (character == character.toUpperCase()){
+		if (character === character.toUpperCase()){
 			capital = true;
 		}
 		
@@ -172,7 +172,7 @@ function check(){
 	
 	
 function postToDB(){	
-  //if(check()){ //Password feature
+  if(check()){ //Password feature
 	axios.post('https://opposum-api.herokuapp.com/register',{
 		params:{
 		firstname: fName(),
@@ -192,7 +192,7 @@ function postToDB(){
 		window.location.reload(false); //Reload page if login fails
 		console.log(error);
 		});
-	//}
+	}
 }
 
 export default Signup;
