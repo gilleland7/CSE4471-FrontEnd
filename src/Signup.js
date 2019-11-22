@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 function Signup(){
 
@@ -67,7 +68,9 @@ function Signup(){
                     </div>
 					 <div className = "col text-center">
 						<button type="onSubmit" onClick={postToDB} className="btn btn-secondary" >Submit</button>
-						
+						<Link to="/">
+							<button type="onSubmit" className="btn btn-secondary" style ={{margin: 10 }} >Home</button>
+						</Link>
 					</div>					 
                 </form>
 
