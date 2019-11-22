@@ -10,6 +10,15 @@ function Signup(){
 				     <span className= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
+         <div class="container-fluid">
+           <h4 class="text-left">Password Instructions</h4>
+           <ul>
+             <li class="text-left">Should have at least 1 special character</li>
+             <li class="text-left">Should have at least 1 uppercase character</li>
+             <li class="text-left">Should have at least 1 lowercase character</li>
+             <li class="text-left">Should have at least 1 number</li>
+           </ul>
+         </div>
          <form>
               <div className= "form-group row">
                   <label htmlFor= "firstname" className= "col-sm-2 col-form-label">First Name</label>
@@ -71,8 +80,8 @@ function Signup(){
 						<Link to="/">
 							<button type="onSubmit" className="btn btn-secondary" style ={{margin: 10 }} >Home</button>
 						</Link>
-					</div>					 
-                </form>
+					</div>
+          </form>
 
         </div>
     );
@@ -115,63 +124,63 @@ function add(){
 
 function check(){
 	var check = true;
-	
+
 	var password = (document.getElementById("password")).value;
 	var confirm = (document.getElementById("passwordConfirm")).value;
-	
+
 	if (password !== confirm){
 		check = false;
 	}
-	
+
 	if (password.length < 10){
 		check = false;
 	}
-	
+
 	var pattern = new RegExp(/[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/);
-	 if (!pattern.test(password)) {	
+	 if (!pattern.test(password)) {
 		alert("Password missing a special character");
         check = false;
     }
-	
+
 	var i = 0;
 	var capital = false;
 	var lower = false;
-	var num = false;	
-	
+	var num = false;
+
 	while (i < password.length){
 		var character = password.charAt(i);
 		if (character === character.toLowerCase()){
-			lower = true;			
+			lower = true;
 		}
 		if (character === character.toUpperCase()){
 			capital = true;
 		}
-		
+
 		if (character >= '0' && character <= '9'){
 			num = true;
-		}	
-		i++;		
+		}
+		i++;
 	}
-	if (!lower){			
+	if (!lower){
 			check = false;
 			alert("Password missing lower case character");
 		}
-		
+
 		if (!capital){
-			alert("Password missing a lower case character");
+			alert("Password missing a upper case character");
 			check = false;
 		}
-		
+
 		if (!num){
 			alert("Password missing a number");
 			check = false;
-		}			
-	
+		}
+
 	return check;
 }
-	
-	
-function postToDB(){	
+
+
+function postToDB(){
   if(check()){ //Password feature
 	axios.post('https://opposum-api.herokuapp.com/register',{
 		params:{
@@ -184,7 +193,7 @@ function postToDB(){
 		password: pass(),
 		}
 	})
-	.then(response => {	  
+	.then(response => {
 		alert("Success");
 		console.log(response);
 	}).catch(function(error) {
