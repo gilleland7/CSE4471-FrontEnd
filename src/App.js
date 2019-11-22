@@ -131,12 +131,11 @@ const Home = () => (
 					<label htmlFor= "password" style ={{margin: 10 }}>Password</label>
 					<input className="form-control" type="password" id="password" required/>
 				</div>
-				<button type= "submit" className= "btn btn-secondary" onClick={results}>Login</button>
-			</form>
-
-		<Link to='/Sign'>
-			<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
-		</Link>
+				<button type= "submit" className= "btn btn-secondary" style ={{margin: 10 }} onClick={results}>Login</button>
+				<Link to='/Sign'>
+					<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
+				</Link>
+			</form>	
 		</div>
 	</div>
 );
