@@ -122,7 +122,7 @@ const Home = () => (
 
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className= "container-fluid">
-			<form onSubmit = {results} className= "form-group">
+			<form  className= "form-group">
 				<div className= "form-inline justify-content-center">
 					<label htmlFor= "username" style ={{margin: 8 }}>Username</label>
 					<input className="form-control" type="username" id="username" required/>
@@ -131,7 +131,7 @@ const Home = () => (
 					<label htmlFor= "password" style ={{margin: 10 }}>Password</label>
 					<input className="form-control" type="password" id="password" required/>
 				</div>
-				<button type= "submit" className= "btn btn-secondary">Login</button>
+				<button type= "submit" className= "btn btn-secondary" onClick={results}>Login</button>
 			</form>
 
 		<Link to='/Sign'>

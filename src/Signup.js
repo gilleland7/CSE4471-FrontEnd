@@ -9,7 +9,7 @@ function Signup(){
 				     <span className= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
-         <form onSubmit={postToDB} >
+         <form>
               <div className= "form-group row">
                   <label htmlFor= "firstname" className= "col-sm-2 col-form-label">First Name</label>
                     <div className= "col-sm-10">
@@ -66,7 +66,8 @@ function Signup(){
                         </div>
                     </div>
 					 <div className = "col text-center">
-						<button htmlFor = "sub" type="onSubmit" className="btn btn-secondary">Submit</button>
+						<button type="onSubmit" onClick={postToDB} className="btn btn-secondary" >Submit</button>
+						
 					</div>					 
                 </form>
 

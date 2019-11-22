@@ -48,7 +48,7 @@ function Search() {
 			<form onSubmit = {searchQuery} className= "form-inline">
 						<input className="form-control" type="search" placeholder="Search" aria-label="search" id="searchID" required/>
 							<button className="btn btn-outline-light my-2 my-sm-0" type="submit" >Search</button>
-				</form>
+			</form>
 		</nav>
 		<img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
 		<div className = "Results" id = 'Results'>
