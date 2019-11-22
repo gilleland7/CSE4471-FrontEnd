@@ -193,7 +193,7 @@ function check(){
 
 function postToDB(){
   if(check()){ //Password feature
-	axios.post('https://opposum-api.herokuapp.com/register',{
+	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstname: fName(),
 		lastname: lName(),
@@ -202,11 +202,11 @@ function postToDB(){
 		username: user(),
 		address: add(),
 		password: pass(),
-		phone: phone(),
+		phone: phone()
 		}
 	})
 	.then(response => {
-		alert("Success");
+		alert(user());
 		console.log(response);
 	}).catch(function(error) {
 		alert("This account has already been made")

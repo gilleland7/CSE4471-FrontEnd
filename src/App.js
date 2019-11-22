@@ -37,8 +37,7 @@ function getPassword(){
 
 const axios = require('axios')
 
-function results(){
-
+function results(){		
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
@@ -54,8 +53,9 @@ function results(){
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
 			} else{
-				alert("Success");
+				alert("We sent you a code");
 				console.log("Success");
+				authenticate();
 			}
 		})
 		.catch(function(error) {
@@ -112,8 +112,7 @@ function checkLogIn(){
 }
 
 
-
-function auth(){
+function authenticate(){
 	
 }
 
@@ -141,8 +140,7 @@ const Home = () => (
 				<button type= "submit" className= "btn btn-secondary" style ={{margin: 10 }} onClick={results}>Login</button>
 				<Link to='/Sign'>
 					<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
-				</Link>
-				<button type= "submit" className= "btn btn-secondary" style ={{margin: 10 }} onClick={auth}>Authenticate</button>
+				</Link>				
 			</form>	
 		</div>
 	</div>
