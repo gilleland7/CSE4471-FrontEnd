@@ -136,19 +136,19 @@ function phone(){
 function check(){
 	var check = true;
 
-	var password = (document.getElementById("password")).value;
+	var password1 = (document.getElementById("password")).value;
 	var confirm = (document.getElementById("passwordConfirm")).value;
 
-	if (password !== confirm){
+	if (password1 !== confirm){
 		check = false;
 	}
 
-	if (password.length < 10){
+	if (password1.length < 10){
 		check = false;
 	}
 
 	var pattern = new RegExp(/[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/);
-	 if (!pattern.test(password)) {
+	 if (!pattern.test(password1)) {
 		alert("Password missing a special character");
         check = false;
     }
@@ -158,8 +158,8 @@ function check(){
 	var lower = false;
 	var num = false;
 
-	while (i < password.length){
-		var character = password.charAt(i);
+	while (i < password1.length){
+		var character = password1.charAt(i);
 		if (character === character.toLowerCase()){
 			lower = true;
 		}
@@ -201,12 +201,12 @@ function postToDB(){
 		ssNum: socialSec(),
 		username: user(),
 		address: add(),
-		password: pass(),
+		password1: pass(),
 		phone: phone()
 		}
 	})
 	.then(response => {
-		alert(user());
+		alert(response.data.success);
 		console.log(response);
 	}).catch(function(error) {
 		alert("This account has already been made")

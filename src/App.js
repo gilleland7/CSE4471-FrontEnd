@@ -41,7 +41,7 @@ function results(){
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
-						password: getPassword()
+						password1: getPassword()
 				}
 			}, {timeout:1})
 		.then(function(response){
