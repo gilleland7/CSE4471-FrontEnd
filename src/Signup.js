@@ -10,13 +10,13 @@ function Signup(){
 				     <span className= "navbar-brand">Inject Me Corp</span>
 			   </nav>
 			   <img src={ require('./components/lock.png')} style={{width: 150}} alt='Lock Logo' />
-         <div class="container-fluid">
-           <h4 class="text-left">Password Instructions</h4>
+         <div className="container-fluid">
+           <h4 className="text-left">Password Instructions</h4>
            <ul>
-             <li class="text-left">Should have at least 1 special character</li>
-             <li class="text-left">Should have at least 1 uppercase character</li>
-             <li class="text-left">Should have at least 1 lowercase character</li>
-             <li class="text-left">Should have at least 1 number</li>
+             <li className="text-left">Should have at least 1 special character</li>
+             <li className="text-left">Should have at least 1 uppercase character</li>
+             <li className="text-left">Should have at least 1 lowercase character</li>
+             <li className="text-left">Should have at least 1 number</li>
            </ul>
          </div>
          <form>
@@ -52,6 +52,12 @@ function Signup(){
                         <label htmlFor= "ssn" className= "col-sm-2 col-form-label">SSN</label>
                         <div className= "col-sm-10">
                             <input className= "form-control" placeholder= "SSN" id="ssn" required/>
+                        </div>
+                    </div>
+					 <div className= "form-group row">
+                        <label htmlFor= "phone" className= "col-sm-2 col-form-label">Phone Number</label>
+                        <div className= "col-sm-10">
+                            <input className= "form-control" placeholder= "Phone" id="phone" required/>
                         </div>
                     </div>
 
@@ -103,8 +109,8 @@ function dateOfBirth(){
 }
 
 function socialSec(){
-  var social = (document.getElementById("ssn")).value;
-  return social;
+  var ssn = (document.getElementById("ssn")).value;
+  return ssn;
 }
 
 function user(){
@@ -120,6 +126,11 @@ function pass(){
 function add(){
 	var add = (document.getElementById("address")).value;
 	return add;
+}
+
+function phone(){
+	var phone = (document.getElementById("phone")).value;
+	return phone;
 }
 
 function check(){
@@ -191,6 +202,7 @@ function postToDB(){
 		username: user(),
 		address: add(),
 		password: pass(),
+		phone: phone(),
 		}
 	})
 	.then(response => {
