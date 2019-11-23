@@ -54,8 +54,10 @@ function results(){
 				window.location.reload(false); //Reload page if login fails
 			} else{
 				alert("We sent you a code");
+				var code = prompt("Enter code here");
 				console.log("Success");
-				authenticate();
+				
+				authenticate(code);
 			}
 		})
 		.catch(function(error) {
@@ -90,7 +92,7 @@ function search(){
 
 			window.name = name+"results="+response.data[1]+"?"+data;
 			checkLogIn();
-
+			 
 
 			window.name = name+"results="+response.data[1]+"?"+data;
 	})
@@ -112,8 +114,8 @@ function checkLogIn(){
 }
 
 
-function authenticate(){
-	
+function authenticate(code){
+	alert(code);
 }
 
 const Home = () => (
@@ -136,13 +138,14 @@ const Home = () => (
 				<div className= "form-inline justify-content-center">
 					<label htmlFor= "password" style ={{margin: 10 }}>Password</label>
 					<input className="form-control" type="password" id="password" required/>
-				</div>
+				</div>				
 				<button type= "submit" className= "btn btn-secondary" style ={{margin: 10 }} onClick={results}>Login</button>
 				<Link to='/Sign'>
 					<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
-				</Link>				
+				</Link>									
 			</form>	
 		</div>
+		
 	</div>
 );
 
