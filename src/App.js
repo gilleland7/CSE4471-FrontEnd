@@ -1,14 +1,17 @@
+//Main front end page
+//Uses React Framework  https://reactjs.org/ 
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Sign from './Signup';
 import Results from './searchResults';
 
-
+//What runs when the application starts up
 function App() {
    const center = {
  	  textAlign: "center"
    };
-
+   
+//Uses React Router to link pages together
   return (
 	 <div style = {center} className = "Banner">
 		<div className= "next">
@@ -24,19 +27,23 @@ function App() {
   );
 }
 
+//Gets the username entered in the login field
 function getUser(){
 
 	var user = (document.getElementById("username")).value;
 	return user
 }
+
+//Gets the password entered in the login field
 function getPassword(){
 	
 	var pass = (document.getElementById("password")).value;
 	return pass;
 }
 
-const axios = require('axios')
+const axios = require('axios') //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
 
+//HTTP Request for user login
 function results(){		
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
@@ -44,19 +51,22 @@ function results(){
 						password1: getPassword()
 				}
 			}, {timeout:1})
-		.then(function(response){
+		.then(function(response){ //Promise
 			
-			window.name = getUser()+"?"+response.data.success;
+			//Window.name persists between pages, used to store login success
+			window.name = getUser()+"?"+response.data.success; 
 			console.log(response.data.success);
 
-			if(!response.data.success){
+			//If login failed due to wrong password
+			if(!response.data.success){ 
 				alert("Wrong username/password");
 				window.location.reload(false); //Reload page if login fails
-			} else{
+			} else { //If logged in
 				alert("We sent you a code");
 				var code = prompt("Enter code here");
 				console.log("Success");
 				
+				//Dual Factor authentication
 				authenticate(code);
 			}
 		})
@@ -65,35 +75,41 @@ function results(){
 		});
 
 }
+
+//Get what field is being searched for
 function getSearch(){
 	var search = (document.getElementById("searchID")).value;
 	return search;
 }
 
+//Runs the HTTP request to search
 function search(){
-	//var loggedIn;
+	var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
+	//If login failed
 	if (data === false){
 		alert("ERROR - Must be logged in to search");
-		//loggedIn = false;
-	} else {
-		
-		//loggedIn = true;
+		loggedIn = false;
+	//If login succeeded
+	} else {		
+		loggedIn = true;
+		alert(window.name);
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
-					username: window.name,
+					//Need to remove the login check
+					username: window.name.substring(0,window.name.indexOf('?')),
 					searchField: getSearch()
 			}
 		})
-	.then(function(response){
+	.then(function(response){ //promise
+			//Need to get rid of the login check
 			var index = window.name.indexOf("?");
 			var name = window.name.substring(0,index);
-
-			window.name = name+"results="+response.data[1]+"?"+data;
-			checkLogIn();
-			 
-
+			
+			//See if login suceeded first
+			checkLogIn();		 
+			//Put the data here
 			window.name = name+"results="+response.data[1]+"?"+data;
 	})
 	.catch(function(error) {
@@ -101,23 +117,29 @@ function search(){
 	});
 	}
 
+	//Returns false so promise always finishes
 	return false;
 }
-
+//Checks if login succeeded
 function checkLogIn(){
+	//Get the status of login
 	var data = window.name.substring(window.name.indexOf('?')+1);
 
 	if (data === true ){
+		//window.name is now just username
 		window.name = window.name.substring(0, window.name.indexOf('?'));
 	}
+	
+	//Needs to always finish, so return false
 	return false;
 }
 
-
+//Dual authentication request
 function authenticate(code){
 	alert(code);
 }
 
+//HTML
 const Home = () => (
 	<div>
 		<nav className= "navbar navbar-dark bg-dark">

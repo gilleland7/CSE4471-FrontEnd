@@ -1,12 +1,18 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//Search Results page
+//Uses React Framework  https://reactjs.org/ 
+import React from 'react'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; //Uses bootstrap for CSS https://getbootstrap.com/
 import {Link} from 'react-router-dom';
 
-const axios = require('axios')
+const axios = require('axios')  //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
 
+//Sets the data to the HTML
 function set(){
 	var array = window.name.split("=");
+	
+	//The data
 	var data = "Results: " + array[0];
+	//If the data was blank, it is false
 	if (array[0]) {
 		document.getElementById('Results').innerHTML = data;
 	} else {
@@ -14,20 +20,25 @@ function set(){
 	}
 }
 
+//Gets the search criteria typed in
 function getSearch(){
 	var search = (document.getElementById("searchID")).value;
 	return search;
 }
 
+//HTTP request for search
 function searchQuery(){
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
-					username: window.name,
+					//Just the username
+					username: window.name.substring(0,window.name.indexOf('?')),
 					searchField: getSearch()
 			}
 		})
 	.then(function(response){
+		//Add the response
 		window.name = window.name+"results="+response.data[1];
+		//Refresh the page
 		window.location.reload(false);
 	})
 	.catch(function(error) {
@@ -35,6 +46,8 @@ function searchQuery(){
 	});
 
 }
+
+//What displays, HTML
 function Search() {
    const center = {
  	  textAlign: "center"
