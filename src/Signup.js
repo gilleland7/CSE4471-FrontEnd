@@ -37,7 +37,7 @@ function Signup(){
                     <div className= "form-group row">
                         <label htmlFor= "dob" className= "col-sm-2 col-form-label">Date of Birth</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "DOB" id="dob" required/>
+                            <input className= "form-control" placeholder= "DOB (10/01/97)" id="dob" required/>
                         </div>
                     </div>
 
@@ -51,13 +51,13 @@ function Signup(){
                     <div className= "form-group row">
                         <label htmlFor= "ssn" className= "col-sm-2 col-form-label">SSN</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "SSN" id="ssn" required/>
+                            <input className= "form-control" placeholder= "SSN (no dashes)" id="ssn" required/>
                         </div>
                     </div>
 					 <div className= "form-group row">
                         <label htmlFor= "phone" className= "col-sm-2 col-form-label">Phone Number</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "Phone" id="phone" required/>
+                            <input className= "form-control" placeholder= "Phone (no dashes)" id="phone" required/>
                         </div>
                     </div>
 
@@ -137,13 +137,15 @@ function check(){
 	var check = true;
 
 	var password1 = (document.getElementById("password")).value;
-	var confirm = (document.getElementById("passwordConfirm")).value;
+	var confirm1 = (document.getElementById("passwordConfirm")).value;
 
-	if (password1 !== confirm){
+	if (password1 !== confirm1){
+		alert("Passwords do not match");
 		check = false;
 	}
 
 	if (password1.length < 10){
+		alert("Password must be at least to characters");
 		check = false;
 	}
 
@@ -190,9 +192,57 @@ function check(){
 	return check;
 }
 
+function formCheck(){
+	var check = true;
+	var i = 0;
+	var soc = false;
+	var dob = false;
+	var pho = false;
+	
+	while (i < dateOfBirth().length){
+		var character = dateOfBirth().charAt(i);
+	
+		if (character >= '0' && character <= '9'){
+			dob = true;
+		}
+		i++;
+	}
+	
+	if (dateOfBirth().length < 8 || dateOfBirth().length > 8 || dob){
+		check = false;
+	}
+	
+	i = 0;
+	while (i < socialSec().length){
+		var character = socialSec().charAt(i);	
+		if (character >= '0' && character <= '9'){
+			soc = true;
+		}
+		i++;
+	}
+	
+	if (socialSec().length < 9 || socialSec().length > 9 || soc){
+		check = false;		
+	}
+	
+	i = 0;
+	while (i < phone().length){
+		var character = phone().charAt(i);
+	
+		if (character >= '0' && character <= '9'){
+			pho = true;
+		}
+		i++;
+	}
+if (phone().length < 10 || phone().length > 10 || pho){		
+		check = false;			
+	}
+	return check;
+}
+
 
 function postToDB(){
-  if(check()){ //Password feature
+  if(check() && formCheck()){ //Password feature
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstname: fName(),
