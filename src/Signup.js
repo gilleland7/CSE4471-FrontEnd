@@ -1,5 +1,5 @@
 //The Sign Up Page
-//Uses React Framework  https://reactjs.org/ 
+//Uses React Framework  https://reactjs.org/
 import React from 'react';
 import axios from 'axios';  //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
 import {Link} from 'react-router-dom';
@@ -174,7 +174,7 @@ function check(){
 	var capital = false;
 	var lower = false;
 	var num = false;
-	
+
 	//Checks each character
 	while (i < password1.length){
 		var character = password1.charAt(i);
@@ -182,12 +182,12 @@ function check(){
 		if (character === character.toLowerCase()){
 			lower = true;
 		}
-		
+
 		//Must have an upper case
 		if (character === character.toUpperCase()){
 			capital = true;
 		}
-		
+
 		//Must have a digit
 		if (character >= '0' && character <= '9'){
 			num = true;
@@ -199,7 +199,7 @@ function check(){
 			check = false;
 			alert("Password missing lower case character");
 		}
-		
+
 		//If no capital
 		if (!capital){
 			alert("Password missing a upper case character");
@@ -222,11 +222,11 @@ function formCheck(){
 	var soc = false;
 	var dob = false;
 	var pho = false;
-	
+
 	//Check each character for DoB
 	while (i < dateOfBirth().length){
 		var character = dateOfBirth().charAt(i);
-	
+
 		//If character isn't a digit
 		if (character >= '0' && character <= '9'){
 			dob = true;
@@ -237,40 +237,40 @@ function formCheck(){
 	if (dateOfBirth().length < 8 || dateOfBirth().length > 8 || dob){
 		check = false;
 	}
-	
+
 	i = 0; //reset
-	
+
 	//Check each SSN character
 	while (i < socialSec().length){
-		var character1 = socialSec().charAt(i);	
+		var character1 = socialSec().charAt(i);
 		//If character is not a digit
 		if (character1 >= '0' && character1 <= '9'){
 			soc = true;
 		}
 		i++;
 	}
-	
+
 	//If ssn is not exactly 9 digits 123-45-6789 without dashes
 	if (socialSec().length < 9 || socialSec().length > 9 || soc){
-		check = false;		
+		check = false;
 	}
-	
+
 	i = 0; //reset
-	
+
 	//CHeck each phone number character
 	while (i < phone().length){
 		var character2 = phone().charAt(i);
-	
+
 		//If character is not a digit
 		if (character2 >= '0' && character2 <= '9'){
 			pho = true;
 		}
 		i++;
 	}
-	
+
 	//If phone number is not exactly 10 characters (123)-456-7890 without dashes
-	if (phone().length < 10 || phone().length > 10 || pho){		
-		check = false;			
+	if (phone().length < 10 || phone().length > 10 || pho){
+		check = false;
 	}
 	return check;
 }
@@ -287,16 +287,16 @@ function postToDB(){
 		username: user(),
 		address: add(),
 		password1: pass(),
-		phone: phone()
+		//phone: phone()
 		}
 	})
-	.then(response => {		
-		console.log(response);
-	}).catch(function(error) {
+	.then(response => {
+		console.log(response.data);
+	}).catch((error)=> {
 		alert("This account has already been made")
-		
+
 		//Reload page if login fails
-		window.location.reload(false); 
+		window.location.reload(false);
 		console.log(error);
 		});
 	//}
