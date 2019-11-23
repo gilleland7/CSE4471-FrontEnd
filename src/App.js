@@ -84,16 +84,16 @@ function getSearch(){
 
 //Runs the HTTP request to search
 function search(){
-	var loggedIn;
+	//var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
 	//If login failed
 	if (data === false){
 		alert("ERROR - Must be logged in to search");
-		loggedIn = false;
+		//loggedIn = false;
 	//If login succeeded
 	} else {		
-		loggedIn = true;
+		//loggedIn = true;
 		alert(window.name);
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{

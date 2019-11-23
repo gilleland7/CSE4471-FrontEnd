@@ -242,9 +242,9 @@ function formCheck(){
 	
 	//Check each SSN character
 	while (i < socialSec().length){
-		var character = socialSec().charAt(i);	
+		var character1 = socialSec().charAt(i);	
 		//If character is not a digit
-		if (character >= '0' && character <= '9'){
+		if (character1 >= '0' && character1 <= '9'){
 			soc = true;
 		}
 		i++;
@@ -259,10 +259,10 @@ function formCheck(){
 	
 	//CHeck each phone number character
 	while (i < phone().length){
-		var character = phone().charAt(i);
+		var character2 = phone().charAt(i);
 	
 		//If character is not a digit
-		if (character >= '0' && character <= '9'){
+		if (character2 >= '0' && character2 <= '9'){
 			pho = true;
 		}
 		i++;
@@ -277,7 +277,7 @@ function formCheck(){
 
 //HTTP to register
 function postToDB(){
-  if(check() && formCheck()){ //Password features
+  //if(check() && formCheck()){ //Password features
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstname: fName(),
@@ -299,7 +299,7 @@ function postToDB(){
 		window.location.reload(false); 
 		console.log(error);
 		});
-	}
+	//}
 }
 
 export default Signup;
