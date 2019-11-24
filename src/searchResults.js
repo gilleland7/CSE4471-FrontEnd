@@ -35,7 +35,9 @@ function searchQuery(e){
 		//Add the response
 		var name = window.name.substring(0,window.name.indexOf('='));
 		//Need the ? to split on in set method
+		console.log(response.data.result);
 		window.name = name+"="+response.data.result+"?";
+		
 		alert("Results: " + response.data.result);
 		
 	})
