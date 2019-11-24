@@ -36,7 +36,6 @@ function getUser(){
 
 //Gets the password entered in the login field
 function getPassword(){
-
 	var pass = (document.getElementById("password")).value;
 	return pass;
 }
@@ -48,11 +47,11 @@ function results(){
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
-						password1: getPassword()
+						password: getPassword()
 				}
 			}, {timeout:1})
 		.then(function(response){ //Promise		
-			alert(response.data.token);
+			
 			var token = response.data.token;
 			
 			console.log(response.data.success);
@@ -92,11 +91,12 @@ function search(){
 	//If login failed
 	if (data === ''){
 		alert("ERROR - Must be logged in to search");
+		
 		//loggedIn = false;
 	//If login succeeded
 	} else {
 		//loggedIn = true;
-		alert(window.name);
+		alert(window.name.substring(0,window.name.indexOf('?')));
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					//Need to remove the login check
@@ -112,8 +112,7 @@ function search(){
 			//See if login suceeded first
 			checkLogIn();
 			//Put the data here
-
-			window.name = name+"results="+response.data[1]+"?"+data;
+			window.name = name+"results="+response.data.result+"?"+data;
 	})
 	.catch(function(error) {
 		console.log(error);
