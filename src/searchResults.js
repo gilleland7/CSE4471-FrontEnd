@@ -9,12 +9,16 @@ const axios = require('axios')  //Uses Axios libray to handle HTTP requests, htt
 //Sets the data to the HTML
 function set(){
 	var array = window.name.split("=");
-	
+	if (array != ''){
 	//The data
-	var data = "Results: " + array[0];
+	var data = "Results: " + array[1].substring(0, array[1].indexOf('?'));
+	var check = array[1].substring(array[1].indexOf('?')+1);
 	//If the data was blank, it is false
-	if (array[0]) {
+	if (check) {
 		document.getElementById('Results').innerHTML = data;
+	} else {
+		document.getElementById('Results').innerHTML = "Search Error";
+	}
 	} else {
 		document.getElementById('Results').innerHTML = "Search Error";
 	}
@@ -37,7 +41,7 @@ function searchQuery(){
 		})
 	.then(function(response){
 		//Add the response
-		window.name = window.name+"results="+response.data[1];
+		window.name = window.name+"results="+response.data.result;
 		//Refresh the page
 		window.location.reload(false);
 	})

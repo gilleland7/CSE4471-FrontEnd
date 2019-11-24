@@ -89,14 +89,14 @@ function search(){
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
 	//If login failed
-	if (data === ''){
+	if (data === '' || data === 'false'){
 		alert("ERROR - Must be logged in to search");
 		
 		//loggedIn = false;
 	//If login succeeded
 	} else {
 		//loggedIn = true;
-		alert(window.name.substring(0,window.name.indexOf('?')));
+		
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					//Need to remove the login check
@@ -112,7 +112,7 @@ function search(){
 			//See if login suceeded first
 			checkLogIn();
 			//Put the data here
-			window.name = name+"results="+response.data.result+"?"+data;
+			window.name = name+"="+response.data.result+"?"+data;
 	})
 	.catch(function(error) {
 		console.log(error);
