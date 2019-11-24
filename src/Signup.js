@@ -280,14 +280,14 @@ function postToDB(){
   //if(check() && formCheck()){ //Password features
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
-		firstname: fName(),
-		lastname: lName(),
+		firstName: fName(),
+		lastName: lName(),
 		dateOfBirth: dateOfBirth(),
 		ssNum: socialSec(),
 		username: user(),
 		address: add(),
-		password1: pass(),
-		//phone: phone()
+		password: pass(),
+		phone: phone()
 		}
 	})
 	.then(response => {
