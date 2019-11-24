@@ -23,6 +23,7 @@ function getSearch(){
 //HTTP request for search
 function searchQuery(e){
 	e.preventDefault();
+	e.returnValue = true;
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					//Just the username

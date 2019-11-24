@@ -228,13 +228,16 @@ function formCheck(){
 		var character = dateOfBirth().charAt(i);
 
 		//If character isn't a digit
-		if (character >= '0' && character <= '9'){
-			dob = true;
+		if (character <= '0' || character >= '9'){
+			if (i !== 2 && i !== 5){
+				dob = true;
+			}
 		}
 		i++;
 	}
 	//If length is not exactly 8 (10/01/97)
-	if (dateOfBirth().length < 8 || dateOfBirth().length > 8 || dob){
+	if (dateOfBirth().length < 8 || dateOfBirth().length > 8 || !dob){
+		alert("DoB not formatted right");
 		check = false;
 	}
 
@@ -244,32 +247,34 @@ function formCheck(){
 	while (i < socialSec().length){
 		var character1 = socialSec().charAt(i);
 		//If character is not a digit
-		if (character1 >= '0' && character1 <= '9'){
+		if (character1 <= '0' || character1 >= '9'){			
 			soc = true;
 		}
 		i++;
 	}
 
 	//If ssn is not exactly 9 digits 123-45-6789 without dashes
-	if (socialSec().length < 9 || socialSec().length > 9 || soc){
+	if (socialSec().length < 9 || socialSec().length > 9 || !soc){
+		alert(socialSec().length);
 		check = false;
 	}
 
 	i = 0; //reset
 
-	//CHeck each phone number character
+	//Check each phone number character
 	while (i < phone().length){
 		var character2 = phone().charAt(i);
 
 		//If character is not a digit
-		if (character2 >= '0' && character2 <= '9'){
+		if (character2 <= '0' || character2 >= '9'){			
 			pho = true;
 		}
 		i++;
 	}
 
 	//If phone number is not exactly 10 characters (123)-456-7890 without dashes
-	if (phone().length < 10 || phone().length > 10 || pho){
+	if (phone().length < 10 || phone().length > 10 || !pho){
+		alert("Phone number wrong");
 		check = false;
 	}
 	return check;
@@ -277,8 +282,10 @@ function formCheck(){
 
 //HTTP to register
 function postToDB(e){
-  if(check() && formCheck()){ //Password features
+
+  if(check()&& formCheck()){ //Password features
 	e.preventDefault();
+	e.returnValue = true;
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstName: fName(),
@@ -292,6 +299,7 @@ function postToDB(e){
 		}
 	})
 	.then(response => {
+		alert("Success");
 		console.log(response.data);
 	}).catch((error)=> {
 		alert("This account has already been made")
