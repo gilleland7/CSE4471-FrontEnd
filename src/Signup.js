@@ -277,7 +277,7 @@ function formCheck(){
 
 //HTTP to register
 function postToDB(){
-  //if(check() && formCheck()){ //Password features
+  if(check() && formCheck()){ //Password features
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstName: fName(),
@@ -287,7 +287,7 @@ function postToDB(){
 		username: user(),
 		address: add(),
 		password: pass(),
-		phone: phone()
+		phoneNum: phone()
 		}
 	})
 	.then(response => {
@@ -299,7 +299,7 @@ function postToDB(){
 		window.location.reload(false);
 		console.log(error);
 		});
-	//}
+	}
 }
 
 export default Signup;
