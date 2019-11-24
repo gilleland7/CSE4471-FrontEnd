@@ -7,31 +7,11 @@ import {Link} from 'react-router-dom';
 const axios = require('axios')  //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
 
 //Sets the data to the HTML
-function set(temp, d){
-	if (!temp){
-		alert("here");
-		document.getElementById('Results').innerHTML = d;				
-	} else {
-		var array = window.name.split("=");
-		if (array !== ''){
-		//The data
-		var index = array[1].indexOf("?");
-		var data = "Results: " + array[1].substring(0, index);
-		var check = array[1].substring(index+1);
-		//If the data was blank, it is false
-		if (check) {
-			if (data !== "" || data !== null) {
-				document.getElementById('Results').innerHTML = data;
-			} else {
-				document.getElementById('Results').innerHTML = "Search Error";
-			}
-		} else {
-			document.getElementById('Results').innerHTML = "Search Error";
-		}
-		} else {
-			document.getElementById('Results').innerHTML = "Search Error";
-		}
-	}
+function set(){
+	var startIndex = window.name.indexOf('=')+1;
+	var endIndex = window.name.indexOf('?');
+	var result = window.name.substring(startIndex, endIndex);
+	alert("Results: " +result);
 }
 
 //Gets the search criteria typed in
@@ -52,9 +32,10 @@ function searchQuery(){
 		})
 	.then(function(response){
 		//Add the response
-		if (response.data.result !== ""){			
-			set(false, response.data.result);
-		}		
+		var name = window.name.substring(0,window.name.indexOf('='));
+		window.name = name+"="+response.data.result+"?";
+		alert("Results: " + response.data.result);
+		
 	})
 	.catch(function(error) {
 		console.log(error);
