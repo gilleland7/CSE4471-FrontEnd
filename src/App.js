@@ -63,11 +63,9 @@ function results(){
 				window.location.reload(false); //Reload page if login fails
 			} else { //If logged in
 				alert("We sent you a code");
-				var code = prompt("Enter code here");
 				console.log("Success");
 
-				//Dual Factor authentication
-				authenticate(code);
+
 			}
 		})
 		.catch(function(error) {
@@ -134,6 +132,7 @@ function checkLogIn(){
 	return false;
 }
 
+
 //Dual authentication request
 function authenticate(code){
 	alert(code);
@@ -167,7 +166,6 @@ const Home = () => (
 				</Link>
 			</form>
 		</div>
-
 	</div>
 );
 
