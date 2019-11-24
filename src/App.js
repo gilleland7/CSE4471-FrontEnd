@@ -62,13 +62,13 @@ function results(){
 				window.location.reload(false); //Reload page if login fails
 			} else { //If logged in
 				alert("We sent you a code");
-				if(authenticate(token)){
+				//if(authenticate(token)){
 					//Window.name persists between pages, used to store login success
 					window.name = getUser()+"?"+response.data.success;
 					console.log("Success");
-				} else {
-					alert("Wrong token - Login Failed");
-				}				
+				//} else {
+					//alert("Wrong token - Login Failed");
+				//}				
 			}
 		})
 		.catch(function(error) {
