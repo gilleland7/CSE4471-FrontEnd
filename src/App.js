@@ -51,11 +51,9 @@ function results(){
 						password1: getPassword()
 				}
 			}, {timeout:1})
-		.then(function(response){ //Promise
-
-			
-			
-			var token = response.data[1];
+		.then(function(response){ //Promise		
+			alert(response.data.token);
+			var token = response.data.token;
 			
 			console.log(response.data.success);
 
