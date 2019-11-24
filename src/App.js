@@ -55,6 +55,9 @@ function results(){
 
 			//Window.name persists between pages, used to store login success
 			window.name = getUser()+"?"+response.data.success;
+			
+			var token = response.data[1];
+			
 			console.log(response.data.success);
 
 			//If login failed due to wrong password
@@ -63,7 +66,11 @@ function results(){
 				window.location.reload(false); //Reload page if login fails
 			} else { //If logged in
 				alert("We sent you a code");
-				console.log("Success");
+				if(authenticate(token)){
+					console.log("Success");
+				} else {
+					alert("Wrong token - Login Failed");
+				}				
 			}
 		})
 		.catch(function(error) {
@@ -135,8 +142,12 @@ function checkLogIn(){
 
 //Dual authentication request
 function authenticate(code){
-	alert(code);
-
+	var check = false;
+	var response = prompt("Enter Code");
+	if (response === code){
+			check = true;
+	}
+	return check;
 }
 
 //HTML
