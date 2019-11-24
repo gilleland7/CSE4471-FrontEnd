@@ -74,14 +74,14 @@ function Signup(){
                     <div className= "form-group row">
                         <label htmlFor= "password" className= "col-sm-2 col-form-label">Password</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "Password" id="password" required/>
+                            <input className= "form-control" type = "password" placeholder= "Password" id="password" required/>
                         </div>
                     </div>
 
                     <div className= "form-group row">
                         <label htmlFor= "password" className= "col-sm-2 col-form-label">Confirm Password</label>
                         <div className= "col-sm-10">
-                            <input className= "form-control" placeholder= "Password" id="passwordConfirm" required/>
+                            <input className= "form-control" type = "password" placeholder= "Password" id="passwordConfirm" required/>
                         </div>
                     </div>
 					 <div className = "col text-center">
