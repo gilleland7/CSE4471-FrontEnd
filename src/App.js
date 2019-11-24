@@ -43,7 +43,8 @@ function getPassword(){
 const axios = require('axios') //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
 
 //HTTP Request for user login
-function results(){
+function results(e){
+		e.preventDefault();
 		axios.get('https://opposum-api.herokuapp.com/login', {
 				params:{
 						username: getUser(),
@@ -85,7 +86,8 @@ function getSearch(){
 }
 
 //Runs the HTTP request to search
-function search(){
+function search(e){
+	e.preventDefault();
 	//var loggedIn;
 	var data = window.name.substring(window.name.indexOf('?')+1); //Gets status of login
 
@@ -138,10 +140,11 @@ function checkLogIn(){
 }
 
 
-
 //Dual authentication request
 function authenticate(code){
 	var check = false;
+	
+	//Prompt sets up a pop up window for user to respond to
 	var response = prompt("Enter Code");
 	if (response === code){
 			check = true;

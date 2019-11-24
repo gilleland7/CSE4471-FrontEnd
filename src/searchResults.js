@@ -1,4 +1,4 @@
-//Search Results page
+//SEARCH RESULTS PAGE
 //Uses React Framework  https://reactjs.org/ 
 import React from 'react'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; //Uses bootstrap for CSS https://getbootstrap.com/
@@ -21,8 +21,8 @@ function getSearch(){
 }
 
 //HTTP request for search
-function searchQuery(){
-	
+function searchQuery(e){
+	e.preventDefault();
 	axios.get('https://opposum-api.herokuapp.com/search', {
 			params:{
 					//Just the username
@@ -33,6 +33,7 @@ function searchQuery(){
 	.then(function(response){
 		//Add the response
 		var name = window.name.substring(0,window.name.indexOf('='));
+		//Need the ? to split on in set method
 		window.name = name+"="+response.data.result+"?";
 		alert("Results: " + response.data.result);
 		
@@ -50,7 +51,6 @@ function Search() {
    }
 
    return (
-
 	 <div style = {center} className = "Banner">
 		<nav className= "navbar navbar-dark bg-dark">
 		<Link to="/">

@@ -1,4 +1,4 @@
-//The Sign Up Page
+//SIGN UP PAGE
 //Uses React Framework  https://reactjs.org/
 import React from 'react';
 import axios from 'axios';  //Uses Axios libray to handle HTTP requests, https://github.com/axios/axios
@@ -276,8 +276,9 @@ function formCheck(){
 }
 
 //HTTP to register
-function postToDB(){
+function postToDB(e){
   if(check() && formCheck()){ //Password features
+	e.preventDefault();
 	axios.post('https://opposum-api.herokuapp.com/register',{},{
 		params:{
 		firstName: fName(),
