@@ -64,8 +64,6 @@ function results(){
 			} else { //If logged in
 				alert("We sent you a code");
 				console.log("Success");
-
-
 			}
 		})
 		.catch(function(error) {
@@ -108,6 +106,7 @@ function search(){
 			//See if login suceeded first
 			checkLogIn();
 			//Put the data here
+
 			window.name = name+"results="+response.data[1]+"?"+data;
 	})
 	.catch(function(error) {
@@ -133,9 +132,11 @@ function checkLogIn(){
 }
 
 
+
 //Dual authentication request
 function authenticate(code){
 	alert(code);
+
 }
 
 //HTML
@@ -165,7 +166,7 @@ const Home = () => (
 					<button type= "button" className= "btn btn-secondary" style ={{margin: 10 }}>Sign Up</button>
 				</Link>
 			</form>
-		</div>
+		</div>	
 	</div>
 );
 
